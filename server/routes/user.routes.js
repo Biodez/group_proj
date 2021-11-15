@@ -9,5 +9,6 @@ module.exports = (app) => {
     jwtMiddleware.authenticate,
     userController.protected
   );
+
   app.post("/api/logout", userController.logout);
 };
