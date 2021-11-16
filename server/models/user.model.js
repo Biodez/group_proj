@@ -30,7 +30,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "username is required"],
     },
-
   },
   { timestamps: true }
 );
@@ -71,5 +70,4 @@ userSchema.pre("save", function (next) {
 });
 
 const User = mongoose.model("User", userSchema);
-
 module.exports = User;
