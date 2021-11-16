@@ -27,8 +27,8 @@ function AdminSignUp() {
       await axios.post("http://localhost:8000/api/signup", postData);
       navigate("/signin");
     } catch (err) {
-      console.log(err.response.data);
-      setError(err.response.data);
+      console.log(err.response.data.errors);
+      setError(err.response.data.errors);
     }
   };
   return (
@@ -78,14 +78,14 @@ function AdminSignUp() {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
-                {error && (
+                {error && error.firstName && (
                   <h3
                     style={{
                       color: "red",
                       fontSize: "small",
                     }}
                   >
-                    {error}
+                    {error.firstName.message}
                   </h3>
                 )}
               </div>
@@ -99,14 +99,14 @@ function AdminSignUp() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                {error && (
+                {error && error.email && (
                   <h3
                     style={{
                       color: "red",
                       fontSize: "small",
                     }}
                   >
-                    {error}
+                    {error.email.message}
                   </h3>
                 )}
               </div>
@@ -120,14 +120,14 @@ function AdminSignUp() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                {error && (
+                {error && error.password && (
                   <h3
                     style={{
                       color: "red",
                       fontSize: "small",
                     }}
                   >
-                    {error}
+                    {error.password.message}
                   </h3>
                 )}
               </div>
@@ -143,14 +143,14 @@ function AdminSignUp() {
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
-                {error && (
+                {error && error.lastName && (
                   <h3
                     style={{
                       color: "red",
                       fontSize: "small",
                     }}
                   >
-                    {error}
+                    {error.lastName.message}
                   </h3>
                 )}
               </div>
@@ -164,14 +164,14 @@ function AdminSignUp() {
                   value={ssn}
                   onChange={(e) => setSSN(e.target.value)}
                 />
-                {error && (
+                {error && error.ssn && (
                   <h3
                     style={{
                       color: "red",
                       fontSize: "small",
                     }}
                   >
-                    {error}
+                    {error.ssn.message}
                   </h3>
                 )}
               </div>
@@ -185,14 +185,14 @@ function AdminSignUp() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
-                {error && (
+                {error && error.confirmPassword && (
                   <h3
                     style={{
                       color: "red",
                       fontSize: "small",
                     }}
                   >
-                    {error}
+                    {error.confirmPassword.message}
                   </h3>
                 )}
               </div>

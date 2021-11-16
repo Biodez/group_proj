@@ -2,7 +2,7 @@ const productRoutes = require("../controllers/product.controller");
 const jwtMiddleware = require("../middleware/jwt.middleware");
 module.exports = (app) => {
   app.get("api/healthcheck", productRoutes.healthCheck);
-  app.get("/api/products", productRoutes.getProducts);
+  app.get("/api/product", productRoutes.getProducts);
   app.get(
     "/api/product/:_id",
     jwtMiddleware.authenticate,

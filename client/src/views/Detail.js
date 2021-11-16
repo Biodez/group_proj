@@ -3,23 +3,30 @@ import axios from 'axios';
 import { navigate, useNavigate } from '@reach/router';
 
 const Detail = (props) => {
-    const [item, setItem] = useState([])
+    const [product, setProduct] = useState([])
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/items/" + props.id)
-            .then(res => setItem({
+        axios.get("http://localhost:8000/api/product/" + props.id)
+            .then(res => setProduct({
                 ...res.data
             }))
     })
     return (
         <div>
-            <p>Title: {item.title}</p>
-            <p>Price: {item.price}</p>
-            <p>About: {item.about}</p>
-            <p>Ratings: {item.ratings}</p>
-            <p>Brand: {item.brand}</p>
-            <hr />
+            <div>
+
+                <p>Title: {product.title}</p>
+                <p>About: {product.about}</p>
+                <p>Quantity: {product.quantity}</p>
+                <p>Brand: {product.brand}</p>
+                <hr />
+            </div>
+            <div>
+                <p>Price: {product.price}</p>
+                <button>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
         </div >
     )
 }
