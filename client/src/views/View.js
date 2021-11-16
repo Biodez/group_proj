@@ -16,8 +16,8 @@ const View = () => {
     }
     return (
         <div>
-            <hr />
             <h2>All Product's</h2>
+            <hr />
             {loaded && <ProductList product={product} removeFromDom={removeFromDom} />}
         </div>
     )
