@@ -3,7 +3,7 @@ import axios from "axios";
 import { navigate, Link } from "@reach/router";
 import { Form, Button } from "react-bootstrap";
 
-const Register = () => {
+const ClientRegister = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ const Register = () => {
       confirmPassword,
     };
     try {
-      await axios.post("http://localhost:8001/api/signup", regData);
+      await axios.post("http://localhost:8000/api/client/signup", regData);
       navigate("client/signin");
     } catch (error) {
       console.log(error.response.data);
@@ -150,5 +150,4 @@ const Register = () => {
     </div>
   );
 };
-
-export default Register;
+export default ClientRegister;

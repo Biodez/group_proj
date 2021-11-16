@@ -1,14 +1,26 @@
 import "./App.css";
 import { Router } from "@reach/router";
-import Register from "./components/Register";
-import Login from "./components/Login";
+import ClientRegister from "./components/ClientRegister";
+import ClientLogin from "./components/ClientLogin";
+import AdminSignIn from "./components/AdminSignIn";
+import AdminSignUp from "./components/AdminSignUp";
+import AdminDisplay from "./views/AdminDisplay";
+import Main from "./views/Main";
+import Update from "./views/Update";
+import ProductEdit from "./views/ProductEdit";
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Register path="/" />
-        <Login path="client/signin" />
+        <ClientRegister path="/" />
+        <ClientLogin path="client/signin" />
+        <AdminSignUp path="/signup" />
+        <AdminSignIn path="/signin" />
+        <AdminDisplay path="/display" />
+        <Main path="/product" />
+        <ProductEdit path="/home" />
+        <Update path="/edit/:id" />
       </Router>
     </div>
   );

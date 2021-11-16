@@ -13,6 +13,12 @@ const userRoute = require("../server/routes/user.routes");
 userRoute(app);
 // productRoute(app)
 
+const adminRoute = require("../server/routes/admin.routes");
+adminRoute(app);
+
+const productRoute = require("./routes/product.routes");
+productRoute(app);
+
 require("./config/mongoose.config");
 
 app.listen(process.env.PORT, () =>

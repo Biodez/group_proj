@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-const Login = () => {
+const ClientLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errmsg, setErrmsg] = useState("");
@@ -13,7 +13,7 @@ const Login = () => {
     setErrmsg("");
     const userData = { email, password };
     try {
-      await axios.post("http://localhost:8001/api/signin", userData, {
+      await axios.post("http://localhost:8000/api/client/signin", userData, {
         withCredentials: true,
       });
       navigate("client/products");
@@ -68,4 +68,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ClientLogin;
