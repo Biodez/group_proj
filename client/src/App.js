@@ -8,6 +8,8 @@ import AdminDisplay from "./views/AdminDisplay";
 import Main from "./views/Main";
 import Update from "./views/Update";
 import ProductEdit from "./views/ProductEdit";
+import View from "./views/View";
+import Detail from "./views/Detail";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Main path="/product" />
         <ProductEdit path="/home" />
         <Update path="/edit/:id" />
+        <View path="/products" />
+        <Detail path="/product/:id" />
       </Router>
     </div>
   );

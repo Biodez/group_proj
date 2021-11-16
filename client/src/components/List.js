@@ -1,17 +1,21 @@
 import React from 'react'
-import axios from 'axios';
 import { Link } from '@reach/router'
 
-const ItemList = (props) => {
+const ProductList = (props) => {
 
     return (
         <div>
-            {props.item.map((item, idx) => {
-                return <p key={idx}>
-                    <Link to={`/items/${item._id}`}>{item.title}</Link>,
-                </p>
+            {props.product.map((product, idx) => {
+                return <div key={idx}>
+                    <div>
+                        <img src={product.imageLink} alt="box" />
+                        <p>{product.title}</p>
+                        <p>{product.about}</p>
+                        <p>{product.brand}</p>
+                    </div>
+                </div>
             })}
         </div>
     )
 }
-export default ItemList;
+export default ProductList;

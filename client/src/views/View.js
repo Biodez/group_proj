@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import ItemList from '../components/List';
-const Main = () => {
-    const [item, setItem] = useState([]);
+import ProductList from '../components/List';
+const View = () => {
+    const [product, setProduct] = useState([]);
     const [loaded, setLoaded] = useState(false);
     useEffect(() => {
-        axios.get('http://localhost:8000/api/items')
+        axios.get('http://localhost:8000/api/product')
             .then(res => {
-                setItem(res.data);
+                setProduct(res.data);
                 setLoaded(true);
             });
     }, [])
-    const removeFromDom = itemId => {
-        setItem(item.filter(item => item._id != itemId));
+    const removeFromDom = productId => {
+        setProduct(product.filter(product => product._id != productId));
     }
     return (
         <div>
             <hr />
-            <h2>All Item's</h2>
-            {loaded && <ItemList item={item} removeFromDom={removeFromDom} />}
+            <h2>All Product's</h2>
+            {loaded && <ProductList product={product} removeFromDom={removeFromDom} />}
         </div>
     )
 }
-export default Main;
+export default View;
