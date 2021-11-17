@@ -41,3 +41,8 @@
   width: 160px;
   height: 140px;
 }
+.list {
+  display: flex;
+  text-align: center;
+  margin-left: 42%;
+}
