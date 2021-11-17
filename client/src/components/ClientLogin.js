@@ -16,7 +16,7 @@ const ClientLogin = () => {
       await axios.post("http://localhost:8000/api/client/signin", userData, {
         withCredentials: true,
       });
-      navigate("client/products");
+      navigate("/products");
     } catch (err) {
       console.log(err.response.data.error);
       setErrmsg(err.response.data.error);
