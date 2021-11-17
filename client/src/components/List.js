@@ -24,8 +24,8 @@ const ProductList = (props) => {
       </div> */}
       {props.product.map((product, idx) => {
         return (
-          <div key={idx}>
-            <div>
+          <div className="list" key={idx}>
+            <div><hr />
               <img className="viewImg" src={product.imageLink} alt="box" />
               <h3>About</h3>
               <Link
@@ -38,12 +38,14 @@ const ProductList = (props) => {
               <p>Description: {product.about}</p>
               <p>Brand: {product.brand}</p>
             </div>
-            <div>
-              <p>Price: {product.price}</p>
+
+            <div >
+              <hr />
+              <p>Price: ${product.price}</p>
               <button>Buy Now</button>
               <CartForm pdtId={product._id} />
             </div>
-            <hr />
+
           </div>
         );
       })}
