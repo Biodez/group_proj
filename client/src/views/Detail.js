@@ -2,18 +2,24 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { navigate, useNavigate } from "@reach/router";
 import ClientLogout from "../components/ClientLogout";
+import CartForm from "../components/CartForm";
 
-const Detail = (props) => {
+const Detail = (req) => {
   const [product, setProduct] = useState([]);
-  const navigate = useNavigate();
+  console.log(product);
+  console.log(req.id);
+  // const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/product/" + props.id).then((res) =>
-      setProduct({
-        ...res.data,
+    axios
+      .get(`http://localhost:8000/api/product/${req.id}`)
+      .then((res) => {
+        setProduct(res.data);
+        // setLoaded(true);
       })
-    );
-  });
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div>
       <div style={{ textAlign: "right", margin: "20px" }}>
@@ -29,7 +35,7 @@ const Detail = (props) => {
       </div>
       <div>
         <p>Price: {product.price}</p>
-        <button>Add to Cart</button>
+        <CartForm pdtId={product._id} />
         <button>Buy Now</button>
       </div>
     </div>

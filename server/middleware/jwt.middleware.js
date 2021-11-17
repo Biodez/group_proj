@@ -15,6 +15,17 @@ const authenticate = (request, response, next) => {
   );
 };
 
+const getIdFromToken = (req, res, next) => {
+  console.log("Gets here");
+  const decodedToken = jwt.decode(req.cookies.usertoken, { complete: true });
+
+  // console.log("Decoded token new", decodedToken.payload.id);
+
+  req.user_id = decodedToken.payload.id;
+  next();
+};
+
 module.exports = {
   authenticate,
+  getIdFromToken,
 };

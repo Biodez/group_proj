@@ -76,11 +76,47 @@ const logout = (request, response) => {
   response.clearCookie("userToken");
   response.status(200).json({ message: "logout succesful!!!" });
 };
+const addtoCart = async (req, res) => {
+  const decodedJwt = jwt.decode(req.cookies.usertoken, { complete: true });
+  try {
+    let result = await User.findByIdAndUpdate(
+      decodedJwt.payload.id,
+      { $push: { cart: req.params.id } },
+      { new: true }
+    );
+    res.json(result);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+const removeFromCart = async (req, res) => {
+  const decodedJwt = jwt.decode(req.cookies.usertoken, { complete: true });
+  try {
+    let result = await User.findByIdAndUpdate(
+      decodedJwt.payload.id,
+      { $pull: { cart: req.params.id } },
+      { new: true }
+    );
+    res.json(result);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
+const getUser = (req, res) => {
+  console.log("okay gets here");
+  User.findOne({ _id: req.user_id })
+    .then((loggedUser) => res.json(loggedUser))
+    .catch((err) => res.status(400).json(err));
+};
 
 module.exports = {
   signUp,
   signIn,
   protected,
   logout,
-//   updateUserProfile,
+  addtoCart,
+  removeFromCart,
+  getUser,
+  //   updateUserProfile,
 };

@@ -1,28 +1,53 @@
-import React from 'react'
-import { Link } from '@reach/router'
+import React from "react";
+import { Link } from "@reach/router";
+import CartForm from "./CartForm";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const ProductList = (props) => {
-
-    return (
-        <div>
-            {props.product.map((product, idx) => {
-                return <div key={idx}>
-                    <div>
-                        <img className="viewImg" src={product.imageLink} alt="box" />
-                        <h3>About</h3>
-                        <p>Name: {product.title}</p>
-                        <p>Description: {product.about}</p>
-                        <p>Brand: {product.brand}</p>
-                    </div>
-                    <div>
-                        <p>Price: {product.price}</p>
-                        <button>Add to Cart</button>
-                        <button>Buy Now</button>
-                    </div>
-                    <hr />
-                </div>
-            })}
-        </div>
-    )
-}
+  // const [user, setUser] = useState([]);
+  // console.log(user);
+  // useEffect(() => {
+  //   console.log("sending request");
+  //   axios
+  //     .get("http://localhost:8000/api/user")
+  //     .then((res) => {
+  //       setUser(res.data);
+  //       // setLoaded(true);
+  //     })
+  //     .catch((err) => console.log(err.response));
+  // }, []);
+  return (
+    <div>
+      {/* <div style={{ textAlign: "right", margin: "20px" }}>
+        {user && user.cart && <p>{user.cart.length} items in your cart</p>}
+      </div> */}
+      {props.product.map((product, idx) => {
+        return (
+          <div key={idx}>
+            <div>
+              <img className="viewImg" src={product.imageLink} alt="box" />
+              <h3>About</h3>
+              <Link
+                style={{ marginRight: "10px" }}
+                to={`/product/${product._id}`}
+              >
+                Name: {product.title}
+              </Link>
+              {/* <p>Name: {product.title}</p> */}
+              <p>Description: {product.about}</p>
+              <p>Brand: {product.brand}</p>
+            </div>
+            <div>
+              <p>Price: {product.price}</p>
+              <button>Buy Now</button>
+              <CartForm pdtId={product._id} />
+            </div>
+            <hr />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 export default ProductList;

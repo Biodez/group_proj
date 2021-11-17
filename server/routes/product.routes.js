@@ -5,7 +5,7 @@ module.exports = (app) => {
   app.get("/api/product", productRoutes.getProducts);
   app.get(
     "/api/product/:_id",
-    jwtMiddleware.authenticate,
+    // jwtMiddleware.authenticate,
     productRoutes.getProduct
   );
   app.post(

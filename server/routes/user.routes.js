@@ -10,4 +10,13 @@ module.exports = (app) => {
     userController.protected
   );
   app.post("/api/client/logout", userController.logout);
+  app.put("/api/client/addcart/:id", userController.addtoCart);
+  app.put("/api/client/removecart/:id", userController.removeFromCart);
+
+  app.get(
+    "/api/user",
+    jwtMiddleware.authenticate,
+    jwtMiddleware.getIdFromToken,
+    userController.getUser
+  );
 };

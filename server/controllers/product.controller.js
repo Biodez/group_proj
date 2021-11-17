@@ -23,6 +23,7 @@ const getProducts = (request, response) => {
 };
 
 const getProduct = (request, response) => {
+  console.log("gets here in the get product controller");
   const { params } = request;
   Product.findOne({ _id: params._id })
     .then((product) => response.json(product))
@@ -58,5 +59,5 @@ module.exports = {
   getProducts,
   getProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
 };
