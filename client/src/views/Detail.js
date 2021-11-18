@@ -34,7 +34,7 @@ const Detail = (req) => {
         <hr />
       </div>
       <div>
-        <p>Price: {product.price}</p>
+        <p>Price: ${product.price}</p>
         <CartForm pdtId={product._id} />
         <button>Buy Now</button>
       </div>
